@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Մուտքագրել նոր ապրանք</title>
+</head>
+<body>
+	<div align="center">
+		<a href="/">Գլխավոր էջ</a>
+
+		<h1>Մուտքագրել նոր ապրանք</h1>
+		<br />
+		<form action="#" th:action="@{/save}" th:object="${product}"
+			method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Անուն:</td>
+					<td><input type="text" th:field="*{name}"  th:required="required"/></td>
+				</tr>
+				<tr>
+					<td>Ապրանք/Սնունդ:</td>
+					<td><select th:field="*{productType}" th:required="required">
+						<option th:value="''" th:text="---"></option>
+						<option th:value="'Սնունդ'" th:text="Սնունդ"></option>
+						<option th:value="'Ապրանք'" th:text="Ապրանք"></option>
+
+					</select></td>
+				</tr>
+				<tr>
+					<td>Չափման միավոր:</td>
+					<td><select th:field="*{unit}" th:required="required">
+						<option th:value="''" th:text="---"></option>
+						<option th:value="'Տուփ'" th:text="Տուփ"></option>
+						<option th:value="'Շիշ'" th:text="Շիշ"></option>
+						<option th:value="'Գրամ'" th:text="Գ"></option>
+						<option th:value="'Կիլոգրամ'" th:text="Կգ"></option>
+						<option th:value="'Հատ'" th:text="Հատ"></option>
+						<option th:value="'Լիտր'" th:text="Լիտր"></option>
+						<option th:value="'Մետր'" th:text="Մ"></option>
+						<option th:value="'Փաթեթ'" th:text="Փաթեթ"></option>
+						<option th:value="'Պարկ'" th:text="Պարկ"></option>
+						<option th:value="'Կոմպլեկտ'" th:text="Կոմպլեկտ"></option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>Միավորում առկա կիլոգրամերը(Ոչ պարտադիր):</td>
+					<td><input type="text" th:field="*{byKg}"/></td>
+				</tr>
+				<tr>
+					<td>Քանակ:</td>
+					<td><input type="text" th:field="*{count}"  th:required="required"/></td>
+				</tr>
+				<tr>
+					<td>Միավորի արժեք(Դրամ):</td>
+					<td><input type="text" th:field="*{price}"  th:required="required"/></td>
+				</tr>
+				<tr>
+					<td>Կազմակերպություն:</td>
+					<td><input type="text" th:field="*{company}" th:required="required" /></td>
+				</tr>
+				<tr>
+					<td>ժամանակ:</td>
+					<td><input type="date" th:field="*{date}"  th:required="required"/></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button name="action" value="Save" type="submit">Պահպանել</button> </td>
+					<td colspan="2"><button name="action" value="Next" type="submit">Պատպանել և մուտքագրել նորը</button> </td>
+
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

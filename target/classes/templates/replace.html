@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Product Manager</title>
+</head>
+<body>
+<div align="center">
+    <h6>Ընտրել ժամանակը և տեղափոխման վայրը</h6>
+    <form th:action="@{newReplace}">
+        <table>
+            <tr>
+                <td>Ժամանկը</td>
+                <td> <input id="calendar" type="date"  th:value="${replaceDate}" name="replaceDate" /></td>
+            </tr>
+            <tr>
+                <td>Վայրը</td>
+                <td><input  type="text"  th:value="${place}" name="place" /></td>
+            </tr>
+        </table>
+
+        <input  type="submit" value="Տեղափոխել"/>
+    </form>
+    <h1><a href="/">Գլխավոր էջ</a></h1>
+    <h1><a href="/replaceHistoryByDate?name=&startDate=&endDate=&place=">Դիտել տեղափոխման պատմությունը</a></h1>
+</div>
+</body>
+</html>

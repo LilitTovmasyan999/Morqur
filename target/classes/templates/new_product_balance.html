@@ -1,0 +1,146 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml"-->
+<!--	xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--<meta charset="utf-8" />-->
+<!--<title>Մուտքագրել նոր ապրանք</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--	<div align="center">-->
+<!--		<h1>Մուտքագրել ապրանքների մնացորդները</h1>-->
+<!--		<br />-->
+
+<!--		<button id="button-excel" onclick="tableToExcel('testTable', 'W3C Example Table')">Ստեղծել Excel</button>-->
+
+<!--			<table id="testTable" border="0" cellpadding="10">-->
+<!--				<thead>-->
+
+<!--				<tr>-->
+<!--					<th>Ապրանքը</th>-->
+<!--					<th>Մնացորդը</th>-->
+
+<!--				</tr>-->
+<!--				</thead>-->
+<!--				<tbody>-->
+<!--				<form action="#" th:action="@{/saveBalanceProduct}" th:object="${list}"-->
+<!--					  method="post">-->
+<!--				<tr th:each="b, itemStat : *{balanceProductModelList}">-->
+<!--					<td  th:field="*{balanceProductModelList[__${itemStat.index}__].product}" th:text="${b.product.name} + '(Արժեք:' + ${b.product.price} + ' դրամ, քանակը: ' + ${b.product.count} + ' ' + ${b.product.unit} + ')'">-->
+<!--						Ապրանքը-->
+<!--					</td>-->
+<!--					<td>-->
+<!--						<input  th:field="*{balanceProductModelList[__${itemStat.index}__].count}" type="text">-->
+<!--					</td>-->
+
+<!--					<td style="width: 0%"><input hidden="hidden" type="date"  th:field="*{balanceProductModelList[__${itemStat.index}__].consumeStartDate}"></td>-->
+<!--					<td style="width: 0%"><input hidden="hidden"type="date"  th:field="*{balanceProductModelList[__${itemStat.index}__].consumeEndDate}"></td>-->
+<!--					<td style="width: 0%"><input hidden="hidden" type="number"  th:field="*{balanceProductModelList[__${itemStat.index}__].consumePeopleCount}"></td>-->
+<!--					<td style="width: 0%">-->
+<!--						<input th:value="${b.balanceDate}" type="date" hidden="hidden" th:field="*{balanceProductModelList[__${itemStat.index}__].balanceDate}">-->
+<!--					</td>-->
+<!--					<td style="width: 0%"><input hidden="hidden" type="text"  th:field="*{balanceProductModelList[__${itemStat.index}__].productId}"></td>-->
+
+<!--				</tr>-->
+<!--				<button type="submit" name="action" value="Save">Save</button>-->
+<!--				</form>-->
+
+<!--				</tbody>-->
+<!--			</table>-->
+
+
+<!--	</div>-->
+<!--	<script type="text/javascript">-->
+<!--		var tableToExcel = (function () {-->
+<!--			var uri = 'data:application/vnd.ms-excel;base64,'-->
+<!--					,-->
+<!--					template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head>&lt;!&ndash;[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]&ndash;&gt;<meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table>{table}</table></body></html>'-->
+<!--					, base64 = function (s) {-->
+<!--						return window.btoa(unescape(encodeURIComponent(s)))-->
+<!--					}-->
+<!--					, format = function (s, c) {-->
+<!--						return s.replace(/{(\w+)}/g, function (m, p) {-->
+<!--							return c[p];-->
+<!--						})-->
+<!--					}-->
+<!--			return function (table, name) {-->
+<!--				if (!table.nodeType) table = document.getElementById(table)-->
+<!--				var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}-->
+<!--				window.location.href = uri + base64(format(template, ctx))-->
+<!--			}-->
+<!--		})()-->
+<!--	</script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<title>Մուտքագրել նոր ապրանք</title>
+</head>
+<body>
+<div align="center">
+	<h1>Մուտքագրել ապրանքների մնացորդները</h1>
+	<br />
+
+<!--	<button id="button-excel" onclick="tableToExcel('testTable', 'W3C Example Table')">Ստեղծել Excel</button>-->
+
+	<table id="testTable" border="0" cellpadding="10">
+		<thead>
+
+		<tr>
+			<th>Ապրանքը</th>
+			<th>Մնացորդը</th>
+
+		</tr>
+		</thead>
+		<tbody>
+<!--		<form action="#" th:action="@{/saveBalanceProduct}" th:object="${list}"-->
+<!--			  method="post">-->
+<!--			<tr th:each="b, itemStat : *{balanceProductModelList}">-->
+<!--				<td  th:field="*{balanceProductModelList[__${itemStat.index}__].product}" th:text="${b.product.name} + '(Արժեք:' + ${b.product.price} + ' դրամ, քանակը: ' + ${b.product.count} + ' ' + ${b.product.unit} + ')'">-->
+<!--					Ապրանքը-->
+<!--				</td>-->
+<!--				<td>-->
+<!--					<input  th:field="*{balanceProductModelList[__${itemStat.index}__].count}" type="text">-->
+<!--				</td>-->
+
+<!--				<td style="width: 0%"><input hidden="hidden" type="date"  th:field="*{balanceProductModelList[__${itemStat.index}__].consumeStartDate}"></td>-->
+<!--				<td style="width: 0%"><input hidden="hidden"type="date"  th:field="*{balanceProductModelList[__${itemStat.index}__].consumeEndDate}"></td>-->
+<!--				<td style="width: 0%"><input hidden="hidden" type="number"  th:field="*{balanceProductModelList[__${itemStat.index}__].consumePeopleCount}"></td>-->
+<!--				<td style="width: 0%">-->
+<!--					<input th:value="${b.balanceDate}" type="date" hidden="hidden" th:field="*{balanceProductModelList[__${itemStat.index}__].balanceDate}">-->
+<!--				</td>-->
+<!--				<td style="width: 0%"><input hidden="hidden" type="text"  th:field="*{balanceProductModelList[__${itemStat.index}__].productId}"></td>-->
+
+<!--			</tr>-->
+<!--			<button type="submit" name="action" value="Save">Save</button>-->
+<!--		</form>-->
+			<form action="#" th:action="@{/nextSaveBalanceProduct}" th:object="${list}"
+			  method="post">
+			<tr th:each="b, itemStat : *{balanceProductModelList}">
+				<td  th:field="*{balanceProductModelList[__${itemStat.index}__].product}" th:text="${b.product.name} + '(Արժեք:' + ${b.product.price} + ' դրամ, քանակը: ' + ${b.product.count} + ' ' + ${b.product.unit} + ')'">
+					Ապրանքը
+				</td>
+				<td>
+					<input  th:field="*{balanceProductModelList[__${itemStat.index}__].count}" type="text">
+				</td>
+
+				<td style="width: 0%"><input hidden="hidden" type="date"  th:field="*{balanceProductModelList[__${itemStat.index}__].consumeStartDate}"></td>
+				<td style="width: 0%"><input hidden="hidden"type="date"  th:field="*{balanceProductModelList[__${itemStat.index}__].consumeEndDate}"></td>
+				<td style="width: 0%"><input hidden="hidden" type="number"  th:field="*{balanceProductModelList[__${itemStat.index}__].consumePeopleCount}"></td>
+				<td style="width: 0%">
+					<input th:value="${b.balanceDate}" type="date" hidden="hidden" th:field="*{balanceProductModelList[__${itemStat.index}__].balanceDate}">
+				</td>
+				<td style="width: 0%"><input hidden="hidden" type="text"  th:field="*{balanceProductModelList[__${itemStat.index}__].productId}"></td>
+
+			</tr>
+			<button type="submit" name="action" value="Save">Next</button>
+		</form>
+		</tbody>
+	</table>
+
+
+</div>
+</body>
+</html>

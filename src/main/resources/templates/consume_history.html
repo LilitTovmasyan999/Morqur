@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="utf-8"/>
+
+        <title>Product Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>Սպառման պատմություն</h1>
+    <br/>
+    <a href="/">Գլխավոր էջ</a>
+    <br>
+    <h5>Ցույց տալ տվյալ օրվա պատմությունը</h5>
+    <form th:action="@{consumeHistoryByDate}">
+        Սկիզբ <input  type="date"  th:value="${date1}" name="startDate" />
+        Վերջ <input  type="date"  th:value="${date2}" name="endDate" />
+        <input  type="submit" value="Ֆիլտրել"/>
+    </form>
+    <h5 th:text="'Սկիզբ ' + ${date1}"></h5>
+    <h5 th:text="'Վերջ ' + ${date2}"></h5>
+    <h5 th:text="'Սպառվել է։ ' +  ${out} + ' դրամ'"></h5>
+    <div th:if="${count != 0}">
+        <h5 th:text="'Սպառողների քանակ։ ' +  ${count}"></h5>
+        <h5 th:text="'1 սպառողին բաժին է ընկում։ ' +  ${out} / ${count} + ' դրամ'"></h5>
+    </div>
+    <!-- ELSE -->
+    <div th:unless="${count != 0}">
+    </div>
+    <button id="button-excel" onclick="tableToExcel('testTable', 'W3C Example Table')">Ստեղծել Excel</button>
+    <table id="testTable" border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th style="width: 12.5%">N</th>
+            <th style="width: 12.5%">Ապրանքը</th>
+            <th style="width: 12.5%">Սպառման սկիզբ</th>
+            <th style="width: 12.5%">Սպառման վերջ</th>
+            <th style="width: 12.5%">Սպառողների քանակ</th>
+            <th style="width: 12.5%">Սպառված քանակ</th>
+            <th style="width: 12.5%">Ընդհանուր արժեքը</th>
+            <th style="width: 12.5%">Մուտքագրման ժամանկը</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="b : *{balanceProducts}">
+            <td style="width: 12.5%" th:text="${balanceProducts.indexOf(b) + 1 }">N</td>
+            <td style="width: 12.5%" th:text="${b.product.name} + '(Արժեք:' + ${b.product.price} + ' դրամ, քանակը: ' + ${b.product.count} + ' ' + ${b.product.unit} + ')'">Ապրանքը</td>
+            <td style="width: 12.5%" th:text="${#dates.format(b.consumeStartDate, 'yyyy-MM-dd')}">Սպառման սկիզբ</td>
+            <td style="width: 12.5%"  th:text="${#dates.format(b.consumeEndDate, 'yyyy-MM-dd')}">Սպառման վերջ</td>
+            <td style="width: 12.5%"  th:text="${b.consumePeopleCount}">Սպառողների քանկը</td>
+            <td style="width: 12.5%"  th:text="${b.consumeCount}">Սպառված քանկը</td>
+            <td style="width: 12.5%"  th:text="${#numbers.formatDecimal((b.product.price * b.consumeCount), 0, 'COMMA', 2, 'POINT')}">Սպառված քանկը</td>
+            <td style="width: 12.5%"  th:text="${#dates.format(b.balanceDate, 'yyyy-MM-dd')}">Սպառողների քանկը</td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<script type="text/javascript">
+    var tableToExcel = (function() {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+            , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--><meta http-equiv="content-type" content="text/plain; charset=UTF-8"/></head><body><table>{table}</table></body></html>'
+            , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+            , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+        return function(table, name) {
+            if (!table.nodeType) table = document.getElementById(table)
+            var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+            window.location.href = uri + base64(format(template, ctx))
+        }
+    })()
+</script>
+</body>
+</html>

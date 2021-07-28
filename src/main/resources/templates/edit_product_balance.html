@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Մուտքագրել նոր ապրանք</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Մուտքագրել ապրանքների մնացորդները</h1>
+		<br />
+		<form action="#" th:action="@{/saveEdit}" th:object="${balanceProduct}"
+			  method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td style="width: 25%">Ապրանքը</td>
+					<td style="width: 25%">Մնացորդը</td>
+					<td style="width: 25%">Սպառման սկիզբ</td>
+					<td style="width: 25%">Սպառման վերջ</td>
+					<td style="width: 25%">Սպառողների քանակ</td>
+				</tr>
+
+					<td style="width: 25%">
+						<input style="width: 0px; visibility: hidden" hidden="hidden" type="text"  th:field="*{id}">
+
+						<input style="width: 0px; visibility: hidden"  type="text"  th:field="*{product}"
+							   th:text="${balanceProduct.product.name} + '(Արժեք:' + ${balanceProduct.product.price} + ' դրամ, քանակը: ' + ${balanceProduct.product.count} + ' ' + ${balanceProduct.product.unit} + ')'">
+					</td>
+					<td style="width: 25%">
+						<input th:field="*{count}" type="text">
+					</td>
+
+					<td style="width: 25%"><input  type="date"  th:field="*{consumeStartDate}"></td>
+					<td style="width: 25%"><input  type="date"  th:field="*{consumeEndDate}"></td>
+					<td style="width: 25%"><input  type="number"  th:field="*{consumePeopleCount}"></td>
+					<td style="width: 0%">
+						<input th:value="${balanceProduct.balanceDate}" type="date" hidden="hidden" th:field="*{balanceDate}">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit">Save</button> </td>
+				</tr>
+			</table>
+		</form>
+
+	</div>
+
+</body>
+</html>

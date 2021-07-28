@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Փոփոխել ապրանքը</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Փոփոխել ապրանքը</h1>
+		<br />
+		<form action="#" th:action="@{/saveProductEdit}" th:object="${product}"
+			method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Ապրանքի ID:</td>
+					<td>
+						<input type="text" th:field="*{id}" readonly="readonly" />
+					</td>
+				</tr>
+				<tr>				
+					<td>Անուն:</td>
+					<td><input type="text" th:field="*{name}" /></td>
+				</tr>
+				<tr>
+					<td>Չափման միավոր:</td>
+					<td><select th:field="*{unit}">
+						<option th:value="''" th:text="---"></option>
+						<option th:value="'Տուփ'" th:text="Տուփ"></option>
+						<option th:value="'Շիշ'" th:text="Շիշ"></option>
+						<option th:value="'Գրամ'" th:text="Գ"></option>
+						<option th:value="'Կիլոգրամ'" th:text="Կգ"></option>
+						<option th:value="'Հատ'" th:text="Հատ"></option>
+						<option th:value="'Լիտր'" th:text="Լիտր"></option>
+						<option th:value="'Մետր'" th:text="Մ"></option>
+						<option th:value="'Փաթեթ'" th:text="Փաթեթ"></option>
+						<option th:value="'Պարկ'" th:text="Պարկ"></option>
+						<option th:value="'Կոմպլեկտ'" th:text="Կոմպլեկտ"></option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>Քանակ:</td>
+					<td><input type="text" th:field="*{count}" /></td>
+				</tr>
+				<tr>
+					<td>Միավորի արժեք(Դրամ):</td>
+					<td><input type="text" th:field="*{price}" /></td>
+				</tr>
+				<tr>
+					<td>Կազմակերպություն:</td>
+					<td><input type="text" th:field="*{company}" /></td>
+				</tr>
+				<tr>
+					<td>ժամանակ:</td>
+					<td><input type="date" th:field="*{date}" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit">Save</button> </td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+
+</body>
+</html>

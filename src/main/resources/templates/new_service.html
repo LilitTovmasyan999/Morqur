@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Մուտքագրել նոր ծառայություն</title>
+</head>
+<body>
+	<div align="center">
+		<a href="/">Գլխավոր էջ</a>
+
+		<h1>Մուտքագրել նոր ծառայություն</h1>
+		<br />
+		<form action="#" th:action="@{/saveService}" th:object="${service}"
+			method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Անուն:</td>
+					<td><input type="text" th:field="*{name}"  th:required="required"/></td>
+				</tr>
+				<tr>
+					<td>Արժեք(Դրամ):</td>
+					<td><input type="text" th:field="*{price}"  th:required="required"/></td>
+				</tr>
+
+				<tr>
+					<td>Սկիզբ:</td>
+					<td><input type="date" th:field="*{startDate}"  th:required="required"/></td>
+				</tr>
+				<tr>
+					<td>Վերջ:</td>
+					<td><input type="date" th:field="*{endDate}"  th:required="required"/></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button name="action" value="Save" type="submit">Պահպանել</button> </td>
+
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

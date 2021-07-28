@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Մուտքագրել նոր ապրանք</title>
+</head>
+<body>
+	<div align="center">
+		<br />
+		<form action="#" th:action="@{/saveEditReplace}" th:object="${replaceProduct}"
+			  method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td style="width: 25%">Ապրանքը</td>
+					<td style="width: 25%">Տեղափոխված քանակը</td>
+					<td style="width: 25%">Ժամանակը</td>
+					<td style="width: 25%">Վայրը</td>
+				</tr>
+
+					<td style="width: 25%">
+						<input style="width: 0px; visibility: hidden" hidden="hidden" type="text"  th:field="*{id}">
+
+						<input style="width: 0px; visibility: hidden"  type="text"  th:field="*{product}"
+							   th:text="${replaceProduct.product.name} + '(Արժեք:' + ${replaceProduct.product.price} + ' դրամ, քանակը: ' + ${replaceProduct.product.count} + ' ' + ${replaceProduct.product.unit} + ')'">
+					</td>
+					<td style="width: 25%">
+						<input th:field="*{count}" type="text">
+					</td>
+
+					<td style="width: 25%"><input  type="date"  th:field="*{replaceDate}"></td>
+					<td style="width: 25%"><input  type="text"  th:field="*{place}"></td>
+				<input style="width: 0px; visibility: hidden" hidden="hidden" type="text"  th:field="*{name}">
+				<input style="width: 0px; visibility: hidden" hidden="hidden" type="text"  th:field="*{oldCount}">
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit">Save</button> </td>
+				</tr>
+			</table>
+		</form>
+
+	</div>
+
+</body>
+</html>
